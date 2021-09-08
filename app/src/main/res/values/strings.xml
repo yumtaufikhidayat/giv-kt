@@ -12,6 +12,7 @@
     <string name="tvForgotPasswords">Forgot Passwords</string>
     <string name="tvFullName">Full Name</string>
     <string name="tvUsername">Username</string>
+    <string name="tvForgotPasswordInfo">Fill in your registered email in AdeptForms to create a new password</string>
 
     // Menu
     <string name="icHome">Home</string>
