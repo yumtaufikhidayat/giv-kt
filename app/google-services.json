@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "468956916534",
+    "project_id": "giv-adeptforms-kt",
+    "storage_bucket": "giv-adeptforms-kt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468956916534:android:952a9813569cc37c03a197",
+        "android_client_info": {
+          "package_name": "com.taufik.adeptforms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468956916534-hv94csa9t2gf8nipth5tc9k9sv7mff0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taufik.adeptforms",
+            "certificate_hash": "c9810da589c06752cae42db409a3ac40d3a6e21c"
+          }
+        },
+        {
+          "client_id": "468956916534-sefqcnr6pc1a8dmvinj0rrmraani5bvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIgC4u6MOQ6jGFG9fchWMZkUwbItPOG5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468956916534-sefqcnr6pc1a8dmvinj0rrmraani5bvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
