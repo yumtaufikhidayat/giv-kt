@@ -110,7 +110,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -142,8 +142,8 @@
         android:text="@string/tvSignIn"
         android:textStyle="bold"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="@id/btnLogin"/>
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        app:layout_constraintStart_toStartOf="@id/btnSignUp"/>
 
     <TextView
         android:id="@+id/tvForgotPassword"
@@ -160,6 +160,6 @@
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="@+id/tvSignIn"
-        app:layout_constraintEnd_toEndOf="@id/btnLogin"/>
+        app:layout_constraintEnd_toEndOf="@id/btnSignUp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
