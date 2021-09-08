@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Adeptforms</string>
+    <string name="tvLoading">Loading…</string>
+    <string name="tvCopyright">Copyright \u00A9 2021 \n Adeptforms version X</string>
+
+    // Menu
+    <string name="icHome">Home</string>
+    <string name="icDocs">Docs</string>
+    <string name="icScan">Scan</string>
+    <string name="icSettings">Settings</string>
+    <string name="icProfile">Profile</string>
+
 </resources>
