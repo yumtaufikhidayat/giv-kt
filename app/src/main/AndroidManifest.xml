@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Adeptforms">
         <activity
+            android:name=".ui.activity.ForgotPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.activity.LoginActivity"
             android:exported="true" />
         <activity

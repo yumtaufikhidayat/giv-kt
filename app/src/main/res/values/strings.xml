@@ -3,10 +3,15 @@
     <string name="tvLoading">Loading…</string>
     <string name="tvCopyright">Copyright \u00A9 2021 \n Adeptforms version X</string>
     <string name="tvWelcomeBack">Welcome Back!</string>
+    <string name="tvSignUpFirst">Sign Up First!</string>
+    <string name="tvResetPassword">Reset Password!</string>
     <string name="tvEmail">Email</string>
     <string name="tvPassword">Password</string>
+    <string name="tvSignIn">Sign In</string>
     <string name="tvSignUp">Sign Up</string>
     <string name="tvForgotPasswords">Forgot Passwords</string>
+    <string name="tvFullName">Full Name</string>
+    <string name="tvUsername">Username</string>
 
     // Menu
     <string name="icHome">Home</string>
@@ -17,4 +22,6 @@
 
     // Button
     <string name="btnSignIn">Sign In</string>
+    <string name="btnSignUp">Sign Up</string>
+    <string name="btnResetPassword">Reset Password</string>
 </resources>

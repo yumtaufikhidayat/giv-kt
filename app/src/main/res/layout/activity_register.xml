@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".ui.activity.RegisterActivity">
 
     <ImageView
         android:id="@+id/imgLoginBackground"
@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tvWelcomeBack"
+        android:text="@string/tvSignUpFirst"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -36,11 +36,41 @@
         app:layout_constraintStart_toStartOf="@id/etEmail"/>
 
     <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorYellow1"
+        android:layout_marginTop="330dp"
+        android:layout_marginHorizontal="36dp"
+        android:hint="@string/tvFullName"
+        android:textSize="15sp"
+        android:textColorHint="@color/colorGrey"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:autofillHints="name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorYellow1"
+        android:layout_marginHorizontal="36dp"
+        android:hint="@string/tvUsername"
+        android:textSize="15sp"
+        android:textColorHint="@color/colorGrey"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:autofillHints="name"
+        app:layout_constraintTop_toBottomOf="@id/etFullName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorYellow1"
-        android:layout_marginTop="350dp"
         android:layout_marginHorizontal="36dp"
         android:hint="@string/tvEmail"
         android:textSize="15sp"
@@ -48,7 +78,7 @@
         android:textColor="@color/black"
         android:inputType="textEmailAddress"
         android:autofillHints="name"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="36dp"
-        android:text="@string/btnSignIn"
+        android:text="@string/btnSignUp"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:background="@drawable/background_corner"
@@ -98,10 +128,10 @@
         app:layout_constraintEnd_toEndOf="@id/tilPassword"/>
 
     <TextView
-        android:id="@+id/tvSignUp"
+        android:id="@+id/tvSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:weightSum="2"
         android:layout_marginHorizontal="20dp"
         android:padding="5dp"
@@ -109,7 +139,7 @@
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_marginStart="3dp"
-        android:text="@string/tvSignUp"
+        android:text="@string/tvSignIn"
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
@@ -119,7 +149,6 @@
         android:id="@+id/tvForgotPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:weightSum="2"
         android:layout_marginHorizontal="20dp"
         android:padding="5dp"
@@ -130,7 +159,7 @@
         android:text="@string/tvForgotPasswords"
         android:textStyle="bold"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintTop_toTopOf="@+id/tvSignIn"
         app:layout_constraintEnd_toEndOf="@id/btnLogin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
