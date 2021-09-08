@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
 
         binding.apply {
+            navBottom.menu.getItem(2).isEnabled = false
             navBottom.setupWithNavController(navController)
         }
     }
