@@ -2,6 +2,7 @@
     <string name="app_name">Adeptforms</string>
     <string name="tvLoading">Loading…</string>
     <string name="tvCopyright">Copyright \u00A9 2021 \n Adeptforms version X</string>
+    <string name="tvCopyright2">Copyright \u00A9 2021 | Version X</string>
     <string name="tvWelcomeBack">Welcome Back!</string>
     <string name="tvSignUpFirst">Sign Up First!</string>
     <string name="tvResetPassword">Reset Password!</string>
@@ -9,6 +10,7 @@
     <string name="tvPassword">Password</string>
     <string name="tvSignIn">Sign In</string>
     <string name="tvSignUp">Sign Up</string>
+    <string name="tvSignOut">Sign Out</string>
     <string name="tvForgotPasswords">Forgot Passwords</string>
     <string name="tvFullName">Full Name</string>
     <string name="tvUsername">Username</string>

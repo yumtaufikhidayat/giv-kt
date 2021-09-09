@@ -5,11 +5,17 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/background_corner.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable-v24/nav_home_selector.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/background_bottom_navigatio.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/background_corner.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/background_sign_out.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/bg_gradient_splashscreen.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_eye_off_password.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_eye_on_password.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_outline_dark_mode.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_outline_segment.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_sign_out.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_docs_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_home_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_profile_selector.xml" value="0.19895833333333332" />
@@ -18,13 +24,13 @@
         <entry key="app/src/main/res/drawable/show_password_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_docs.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1828125" />
       </map>
     </option>

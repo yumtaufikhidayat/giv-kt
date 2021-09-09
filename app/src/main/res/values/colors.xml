@@ -10,6 +10,8 @@
     <color name="colorStatusBar">#383838</color>
     <color name="colorYellow1">#F6DA2B</color>
     <color name="colorYellow2">#FBEFA4</color>
+    <color name="colorYellow3">#FFF198</color>
     <color name="colorPrimaryAccent">#0097FB</color>
     <color name="colorGrey">#8A8A8A</color>
+    <color name="colorSemiWhite">#FAFBFD</color>
 </resources>
