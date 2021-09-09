@@ -1,8 +1,11 @@
 package com.taufik.adeptforms.ui.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.taufik.adeptforms.R
 import com.taufik.adeptforms.databinding.ActivityForgotPasswordBinding
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -14,10 +17,23 @@ class ForgotPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        setWindowNotificationBackground()
 
         setSignIn()
 
         setSignUp()
+    }
+
+    /**
+     * Method to set notification bar
+     */
+    private fun setWindowNotificationBackground() {
+        val windowNotificationBackground = this.window
+        windowNotificationBackground.statusBarColor = ContextCompat.getColor(this, R.color.colorYellow1)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            windowNotificationBackground.setDecorFitsSystemWindows(true)
+        }
     }
 
     private fun setSignIn() {
