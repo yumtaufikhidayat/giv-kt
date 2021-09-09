@@ -47,7 +47,7 @@ class SplashscreenActivity : AppCompatActivity() {
     private fun setSplashScreen() {
         handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            if (auth.currentUser == null) {
+            if (auth.currentUser == null || !auth.currentUser!!.isEmailVerified) {
                 Intent(this, LoginActivity::class.java).also { intent ->
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
