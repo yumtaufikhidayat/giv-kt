@@ -86,7 +86,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="36dp"
         android:text="@string/btnSignIn"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textAllCaps="false"
         android:background="@drawable/background_corner"
         style="?android:attr/borderlessButtonStyle"
