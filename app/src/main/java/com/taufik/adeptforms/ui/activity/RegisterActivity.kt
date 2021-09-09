@@ -128,7 +128,10 @@ class RegisterActivity : AppCompatActivity() {
     private fun setSignIn() {
         binding.apply {
             tvSignIn.setOnClickListener {
-                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                Intent(this@RegisterActivity, LoginActivity::class.java).also { intent ->
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -136,7 +139,10 @@ class RegisterActivity : AppCompatActivity() {
     private fun setForgotPassword() {
         binding.apply {
             tvForgotPassword.setOnClickListener {
-                startActivity(Intent(this@RegisterActivity, ForgotPasswordActivity::class.java))
+                Intent(this@RegisterActivity, ForgotPasswordActivity::class.java).also { intent ->
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
             }
         }
     }

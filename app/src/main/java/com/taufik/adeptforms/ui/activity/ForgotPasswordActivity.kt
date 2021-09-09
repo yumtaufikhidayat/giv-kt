@@ -23,7 +23,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun setSignIn() {
         binding.apply {
             tvSignIn.setOnClickListener {
-                startActivity(Intent(this@ForgotPasswordActivity, LoginActivity::class.java))
+                Intent(this@ForgotPasswordActivity, LoginActivity::class.java).also { intent ->
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -31,7 +34,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun setSignUp() {
         binding.apply {
             tvSignUp.setOnClickListener {
-                startActivity(Intent(this@ForgotPasswordActivity, RegisterActivity::class.java))
+                Intent(this@ForgotPasswordActivity, RegisterActivity::class.java).also { intent ->
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
             }
         }
     }
