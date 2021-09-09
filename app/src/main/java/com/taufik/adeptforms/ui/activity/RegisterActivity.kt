@@ -82,7 +82,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     auth.currentUser?.sendEmailVerification()?.addOnCompleteListener {
                         if (it.isSuccessful) {
-                            confirmRegister()
+                            confirmSignUp()
                         } else {
                             Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
@@ -93,7 +93,7 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun confirmRegister() {
+    private fun confirmSignUp() {
         AlertDialog.Builder(this).also { builder ->
             builder.setTitle("Sign up is successful!")
                 .setMessage("Sign up is successful. Please check your email to verify.")
