@@ -57,7 +57,7 @@ class SettingsFragment : Fragment() {
     private fun confirmSignOut() {
 
         AlertDialog.Builder(requireActivity()).also { builder ->
-            builder.setTitle("Logout!")
+            builder.setTitle("Sign Out!")
                 .setMessage("Are you sure you want to sign out?")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
