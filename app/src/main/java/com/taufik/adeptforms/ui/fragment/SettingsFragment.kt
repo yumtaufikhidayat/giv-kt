@@ -89,9 +89,10 @@ class SettingsFragment : Fragment() {
 
     private fun backToHomeFragment() {
         binding.apply {
-            
-            val action = SettingsFragmentDirections.actionNavSettingsToNavHome()
-            findNavController().navigate(action)
+            cardBack.setOnClickListener {
+                val action = SettingsFragmentDirections.actionNavSettingsToNavHome()
+                findNavController().navigate(action)
+            }
         }
     }
 
