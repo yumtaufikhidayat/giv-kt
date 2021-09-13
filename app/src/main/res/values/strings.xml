@@ -16,6 +16,8 @@
     <string name="tvUsername">Username</string>
     <string name="tvForgotPasswordInfo">Fill in your registered email in AdeptForms to create a new password</string>
     <string name="tvLite">Lite</string>
+    <string name="tvHelpYou">How can we help you?</string>
+    <string name="tvConnectToTeam">Connect to our available support team</string>
 
     // Menu
     <string name="icHome">Home</string>
