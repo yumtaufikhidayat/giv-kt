@@ -1,11 +1,12 @@
 package com.taufik.adeptforms.ui.fragment
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,13 +49,27 @@ class SettingsFragment : Fragment() {
     private fun setSignOut() {
         binding.apply {
             cardSignOut.setOnClickListener {
-                auth.signOut()
-                Intent(requireActivity(), LoginActivity::class.java).also {
-                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(it)
-                }
-                Toast.makeText(requireActivity(), "Successfully logout", Toast.LENGTH_SHORT).show()
+                confirmSignOut()
             }
+        }
+    }
+
+    private fun confirmSignOut() {
+
+        AlertDialog.Builder(requireActivity()).also { builder ->
+            builder.setTitle("Logout!")
+                .setMessage("Are you sure you want to sign out?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
+                    auth.signOut()
+                    Intent(requireActivity(), LoginActivity::class.java).also {
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(it)
+                    }
+                }
+                .setCancelable(false)
+                .create()
+                .show()
         }
     }
 

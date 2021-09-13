@@ -188,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="45dp"
+            android:layout_marginHorizontal="20dp"
             android:overScrollMode="never"
             android:scrollbars="none"
             android:focusable="true"
@@ -209,6 +209,9 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:background="@drawable/background_corner"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rvSettings">
