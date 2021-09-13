@@ -97,6 +97,7 @@
         app:layout_constraintStart_toStartOf="@id/tvAdeptForms"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardSignOut"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:cardBackgroundColor="@color/colorYellow3"
