@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -40,6 +41,8 @@ class SettingsFragment : Fragment() {
         setSignOut()
 
         setData()
+
+        backToHomeFragment()
     }
 
     private fun initFirebase() {
@@ -81,6 +84,14 @@ class SettingsFragment : Fragment() {
             rvSettings.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
             settingsAdapter.setSettingsData(DummyData.getAllSettings())
             rvSettings.adapter = settingsAdapter
+        }
+    }
+
+    private fun backToHomeFragment() {
+        binding.apply {
+            
+            val action = SettingsFragmentDirections.actionNavSettingsToNavHome()
+            findNavController().navigate(action)
         }
     }
 
