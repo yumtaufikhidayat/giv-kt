@@ -52,7 +52,7 @@ class SplashscreenActivity : AppCompatActivity() {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                 }
-            } else if (auth.currentUser!!.isEmailVerified){
+            } else if (auth.currentUser != null && auth.currentUser!!.isEmailVerified) {
                 Intent(this, MainActivity::class.java).also { intent ->
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
