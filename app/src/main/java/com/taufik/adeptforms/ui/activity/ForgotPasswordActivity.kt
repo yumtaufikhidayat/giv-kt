@@ -83,18 +83,18 @@ class ForgotPasswordActivity : AppCompatActivity() {
     }
 
     private fun confirmResetPassword() {
-        AlertDialog.Builder(this).also { builder ->
-            builder.setTitle("Reset email confirm!")
-                .setMessage("Url to reset password has sent. Check your email to reset password.")
-                .setPositiveButton("Sign In") { _: DialogInterface?, _: Int ->
-                    Intent(this, LoginActivity::class.java).also {
-                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(it)
-                    }
+        AlertDialog.Builder(this).apply {
+            setTitle("Reset email confirm!")
+            setMessage("Url to reset password has sent. Check your email to reset password.")
+            setPositiveButton("Sign In") { _: DialogInterface?, _: Int ->
+                Intent(this@ForgotPasswordActivity, LoginActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(it)
                 }
-                .setCancelable(false)
-                .create()
-                .show()
+            }
+            setCancelable(false)
+            create()
+            show()
         }
     }
 

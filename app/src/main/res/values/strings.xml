@@ -23,6 +23,7 @@
     <string name="tvAppIntegrations">App Integrations</string>
     <string name="tvHRMLabs">HRMLabs</string>
     <string name="tvHRMLabsDesc">Adeptforms pulls your employment data</string>
+    <string name="tvProcessing">Processing…</string>
 
     // Menu
     <string name="icHome">Home</string>

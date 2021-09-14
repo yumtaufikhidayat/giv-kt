@@ -124,18 +124,18 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun confirmSignUp() {
-        AlertDialog.Builder(this).also { builder ->
-            builder.setTitle("Sign up is successful!")
-                .setMessage("Sign up is successful. Please check your email to verify.")
-                .setPositiveButton("Sign In") { _: DialogInterface?, _: Int ->
-                    Intent(this@RegisterActivity, LoginActivity::class.java).also {
-                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(it)
-                    }
+        AlertDialog.Builder(this).apply {
+            setTitle("Sign up is successful!")
+            setMessage("Sign up is successful. Please check your email to verify.")
+            setPositiveButton("Sign In") { _: DialogInterface?, _: Int ->
+                Intent(this@RegisterActivity, LoginActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(it)
                 }
-                .setCancelable(false)
-                .create()
-                .show()
+            }
+            setCancelable(false)
+            create()
+            show()
         }
     }
 

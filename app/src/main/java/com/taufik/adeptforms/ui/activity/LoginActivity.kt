@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.taufik.adeptforms.R
+import com.taufik.adeptforms.data.utils.LoadingDialog
 import com.taufik.adeptforms.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         setWindowNotificationBackground()
 
-        initFirebaseAuth()
+        setInit()
 
         setSignIn()
 
@@ -44,8 +46,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun initFirebaseAuth() {
+    private fun setInit() {
         auth = FirebaseAuth.getInstance()
+        loadingDialog = LoadingDialog(this)
     }
 
     private fun setSignIn() {
@@ -72,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
+                loadingDialog.startLoadingDialog()
                 loginUser(email, password)
             }
         }
@@ -82,14 +86,17 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     if (auth.currentUser!!.isEmailVerified){
+                        loadingDialog.dismissLoadingDialog()
                         Intent(this, MainActivity::class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }
                     } else {
+                        loadingDialog.dismissLoadingDialog()
                         confirmSignIn("Please verify your email before login")
                     }
                 } else {
+                    loadingDialog.dismissLoadingDialog()
                     confirmSignIn("Email or password is invalid")
                     Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -97,13 +104,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun confirmSignIn(message: String) {
-        AlertDialog.Builder(this).also { builder ->
-            builder.setTitle("Sign in confirm!")
-                .setMessage(message)
-                .setPositiveButton("Close", null)
-                .setCancelable(false)
-                .create()
-                .show()
+        AlertDialog.Builder(this).apply {
+            setTitle("Sign in confirm!")
+            setMessage(message)
+            setPositiveButton("Close", null)
+            setCancelable(false)
+            create()
+            show()
         }
     }
 

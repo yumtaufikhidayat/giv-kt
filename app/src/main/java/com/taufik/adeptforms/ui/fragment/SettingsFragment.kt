@@ -59,20 +59,20 @@ class SettingsFragment : Fragment() {
 
     private fun confirmSignOut() {
 
-        AlertDialog.Builder(requireActivity()).also { builder ->
-            builder.setTitle("Sign Out!")
-                .setMessage("Are you sure you want to sign out?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
-                    auth.signOut()
-                    Intent(requireActivity(), LoginActivity::class.java).also {
-                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(it)
-                    }
+        AlertDialog.Builder(requireActivity()).apply {
+            setTitle("Sign Out!")
+            setMessage("Are you sure you want to sign out?")
+            setNegativeButton("No", null)
+            setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
+                auth.signOut()
+                Intent(requireActivity(), LoginActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(it)
                 }
-                .setCancelable(false)
-                .create()
-                .show()
+            }
+            setCancelable(false)
+            create()
+            show()
         }
     }
 
