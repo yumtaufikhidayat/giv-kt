@@ -69,47 +69,47 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun openCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
-            activity?.packageManager?.let {
-                intent.resolveActivity(it).also {
-                    startActivityForResult(intent, REQUEST_CAMERA_CODE)
-                }
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            uploadImage(imageBitmap)
-        }
-    }
-
-    private fun uploadImage(imageBitmap: Bitmap) {
-        val byteArrayOutputString = ByteArrayOutputStream()
-        val reference = FirebaseStorage.getInstance().reference.child(
-            "img/${FirebaseAuth.getInstance().currentUser?.uid}"
-        )
-
-        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputString)
-        val image = byteArrayOutputString.toByteArray()
-
-        reference.putBytes(image)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    reference.downloadUrl.addOnCompleteListener { taskUri ->
-                        taskUri.result?.let {
-                            imageUri = it
-                            binding.apply {
-                                imgProfileImage.setImageBitmap(imageBitmap)
-                            }
-                        }
-                    }
-                }
-            }
-    }
+//    private fun openCamera() {
+//        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
+//            activity?.packageManager?.let {
+//                intent.resolveActivity(it).also {
+//                    startActivityForResult(intent, REQUEST_CAMERA_CODE)
+//                }
+//            }
+//        }
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
+//            val imageBitmap = data?.extras?.get("data") as Bitmap
+//            uploadImage(imageBitmap)
+//        }
+//    }
+//
+//    private fun uploadImage(imageBitmap: Bitmap) {
+//        val byteArrayOutputString = ByteArrayOutputStream()
+//        val reference = FirebaseStorage.getInstance().reference.child(
+//            "img/${FirebaseAuth.getInstance().currentUser?.uid}"
+//        )
+//
+//        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputString)
+//        val image = byteArrayOutputString.toByteArray()
+//
+//        reference.putBytes(image)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    reference.downloadUrl.addOnCompleteListener { taskUri ->
+//                        taskUri.result?.let {
+//                            imageUri = it
+//                            binding.apply {
+//                                imgProfileImage.setImageBitmap(imageBitmap)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//    }
 
     private fun setProfileAppIntegrations() {
         profileAdapter = ProfileAdapter()
