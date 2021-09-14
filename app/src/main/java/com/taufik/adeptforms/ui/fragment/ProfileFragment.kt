@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentProfileBinding
@@ -28,7 +29,18 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        backToHomeFragment()
+
         setProfileData()
+    }
+
+    private fun backToHomeFragment() {
+        binding.apply {
+            cardBack.setOnClickListener {
+                val actionToHomeFragment = ProfileFragmentDirections.actionNavProfileToNavHome()
+                findNavController().navigate(actionToHomeFragment)
+            }
+        }
     }
 
     private fun setProfileData() {
