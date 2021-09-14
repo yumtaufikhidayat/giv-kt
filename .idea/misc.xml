@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/drawable/ic_outline_edit.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_outline_headset.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_outline_segment.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.16324786324786325" />
+        <entry key="app/src/main/res/drawable/ic_person_add.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/ic_sign_out.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_docs_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_home_selector.xml" value="0.19895833333333332" />
