@@ -88,7 +88,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                     } else {
                         confirmSignIn("Please verify your email before login")
-                        Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     confirmSignIn("Email or password is invalid")

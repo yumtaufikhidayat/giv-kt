@@ -54,6 +54,8 @@ class RegisterActivity : AppCompatActivity() {
             btnSignUp.setOnClickListener {
                 val fullName = etFullName.text.toString().trim()
                 val username = etUsername.text.toString().trim()
+                val companyName = etCompanyName.text.toString().trim()
+                val jobPosition = etJobPosition.text.toString().trim()
                 val email = etEmail.text.toString().trim()
                 val password = etPassword.text.toString().trim()
 
@@ -66,6 +68,18 @@ class RegisterActivity : AppCompatActivity() {
                 if (username.isEmpty()) {
                     etUsername.error = "Username can't be blank"
                     etUsername.requestFocus()
+                    return@setOnClickListener
+                }
+
+                if (companyName.isEmpty()) {
+                    etCompanyName.error = "Company name can't be blank"
+                    etCompanyName.requestFocus()
+                    return@setOnClickListener
+                }
+
+                if (jobPosition.isEmpty()) {
+                    etJobPosition.error = "Job position can't be blank"
+                    etJobPosition.requestFocus()
                     return@setOnClickListener
                 }
 
