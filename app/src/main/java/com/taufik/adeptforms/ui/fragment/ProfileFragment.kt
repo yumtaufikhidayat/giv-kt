@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var profileAdapter: ProfileAdapter
     private lateinit var imageUri: Uri
 
@@ -45,9 +46,9 @@ class ProfileFragment : Fragment() {
 
         backToHomeFragment()
 
-        setProfileImage()
+        navigateToStorageFragment()
 
-        setProfileData()
+        setProfileAppIntegrations()
     }
 
     private fun backToHomeFragment() {
@@ -59,10 +60,11 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun setProfileImage() {
+    private fun navigateToStorageFragment() {
         binding.apply {
             cardEditImage.setOnClickListener {
-                openCamera()
+                val actionToStorage = ProfileFragmentDirections.actionNavProfileToNavStorage()
+                findNavController().navigate(actionToStorage)
             }
         }
     }
@@ -109,7 +111,7 @@ class ProfileFragment : Fragment() {
             }
     }
 
-    private fun setProfileData() {
+    private fun setProfileAppIntegrations() {
         profileAdapter = ProfileAdapter()
         binding.apply {
             rvProfile.layoutManager = LinearLayoutManager(requireActivity())

@@ -37,5 +37,7 @@
     <string name="btnSignUp">Sign Up</string>
     <string name="btnResetPassword">Reset Password</string>
     <string name="btnConnected">Connected</string>
+    <string name="btnSelectImage">Select Image</string>
+    <string name="btnUploadImage">Upload Image</string>
 
 </resources>
