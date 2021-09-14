@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
-                android:id="@+id/tvAdeptForms"
+                android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:contentDescription="@null"
@@ -91,12 +91,12 @@
                 app:layout_constraintStart_toEndOf="@id/cardBack"/>
 
             <TextView
-                android:id="@+id/tvCopyright"
+                android:id="@+id/tvJobPosition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/tvCopyright2"
-                app:layout_constraintTop_toBottomOf="@id/tvAdeptForms"
-                app:layout_constraintStart_toStartOf="@id/tvAdeptForms"/>
+                app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+                app:layout_constraintStart_toStartOf="@id/tvProfileName"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

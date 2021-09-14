@@ -80,6 +80,8 @@ class ProfileFragment : Fragment() {
 
                         Log.e(TAG, "onDataChange: $users")
 
+                        tvProfileName.text = users.fullName
+                        tvJobPosition.text = users.jobPosition
                         etEmail.text = users.email
                         etFullName.text = users.fullName
                         etUsername.setText(users.userName)
@@ -91,7 +93,7 @@ class ProfileFragment : Fragment() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.e(TAG, "onCancelled: ${error.message}")
                 }
             })
         }
