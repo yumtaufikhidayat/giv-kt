@@ -20,6 +20,9 @@
     <string name="tvLite">Lite</string>
     <string name="tvHelpYou">How can we help you?</string>
     <string name="tvConnectToTeam">Connect to our available support team</string>
+    <string name="tvAppIntegrations">App Integrations</string>
+    <string name="tvHRMLabs">HRMLabs</string>
+    <string name="tvHRMLabsDesc">Adeptforms pulls your employment data</string>
 
     // Menu
     <string name="icHome">Home</string>
@@ -32,4 +35,6 @@
     <string name="btnSignIn">Sign In</string>
     <string name="btnSignUp">Sign Up</string>
     <string name="btnResetPassword">Reset Password</string>
+    <string name="btnConnected">Connected</string>
+
 </resources>

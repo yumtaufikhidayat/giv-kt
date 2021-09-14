@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentProfileBinding
+import com.taufik.adeptforms.ui.adapter.profile.ProfileAdapter
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var profileAdapter: ProfileAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +27,18 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setProfileData()
+    }
+
+    private fun setProfileData() {
+        profileAdapter = ProfileAdapter()
+        binding.apply {
+            rvProfile.layoutManager = LinearLayoutManager(requireActivity())
+            rvProfile.setHasFixedSize(true)
+            profileAdapter.setProfileData(DummyData.getAllProfiles())
+            rvProfile.adapter = profileAdapter
+        }
     }
 
     override fun onDestroyView() {

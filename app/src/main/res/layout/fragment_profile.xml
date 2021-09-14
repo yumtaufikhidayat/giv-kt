@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="30dp"
     android:scrollbars="none"
-    android:background="@color/colorSemiWhite"
+    android:overScrollMode="never"
+    android:background="@android:color/transparent"
     tools:context=".ui.fragment.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -180,21 +181,19 @@
             android:layout_marginTop="5dp"
             android:layout_marginHorizontal="30dp"
             android:background="@drawable/background_edittext_grey"
-            android:gravity="start"
             android:orientation="horizontal"
             android:padding="1dp"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail">
 
-            <EditText
+            <TextView
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                tools:text="@string/tvEmail"
+                android:textColor="@color/colorGrey"
                 android:paddingHorizontal="12dp"
                 android:backgroundTint="@android:color/transparent"
-                android:hint="@string/tvEmail"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
                 android:textColorHint="@color/colorSemiBlack"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-medium"/>
@@ -206,10 +205,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="45dp"
             android:text="@string/tvUsername"
             app:layout_constraintTop_toBottomOf="@id/llFullName"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/tvEmail"/>
+
+        <TextView
+            android:id="@+id/tvFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/tvFullName"
+            app:layout_constraintTop_toBottomOf="@id/llEmail"
+            app:layout_constraintStart_toStartOf="@id/tvEmail"/>
+
+        <LinearLayout
+            android:id="@+id/llFullName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/background_edittext_grey"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:padding="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvFullName">
+
+            <TextView
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                tools:text="@string/tvFullName"
+                android:textColor="@color/colorGrey"
+                android:paddingHorizontal="12dp"
+                android:backgroundTint="@android:color/transparent"
+                android:textColorHint="@color/colorSemiBlack"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llUsername"
@@ -254,10 +288,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="45dp"
             android:text="@string/tvPassword"
             app:layout_constraintTop_toBottomOf="@id/llUsername"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/tvEmail"/>
 
         <LinearLayout
             android:id="@+id/llPassword"
@@ -298,42 +331,36 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvFullName"
+            android:id="@+id/tvAppIntegrations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="45dp"
-            android:text="@string/tvFullName"
-            app:layout_constraintTop_toBottomOf="@id/llEmail"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:text="@string/tvAppIntegrations"
+            app:layout_constraintTop_toBottomOf="@id/llPassword"
+            app:layout_constraintStart_toStartOf="@id/tvEmail"/>
 
-        <LinearLayout
-            android:id="@+id/llFullName"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="30dp"
-            android:background="@drawable/background_edittext_grey"
-            android:gravity="start"
-            android:orientation="horizontal"
-            android:padding="1dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvFullName">
+        <View
+            android:id="@+id/viewProfile"
+            android:layout_width="36dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/colorYellow1"
+            app:layout_constraintTop_toBottomOf="@id/tvAppIntegrations"
+            app:layout_constraintStart_toStartOf="@id/tvEmail"/>
 
-            <EditText
-                android:id="@+id/etFullName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:paddingHorizontal="12dp"
-                android:backgroundTint="@android:color/transparent"
-                android:hint="@string/tvFullName"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColorHint="@color/colorSemiBlack"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif-medium"/>
-
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            tools:listitem="@layout/item_profile"
+            tools:itemCount="2"
+            app:layout_constraintTop_toBottomOf="@id/viewProfile"
+            app:layout_constraintStart_toStartOf="@id/llPassword"
+            app:layout_constraintEnd_toEndOf="@id/llPassword"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
