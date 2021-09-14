@@ -10,13 +10,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.taufik.adeptforms.R
 import com.taufik.adeptforms.databinding.ActivityRegisterBinding
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var reference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,20 +105,56 @@ class RegisterActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                registerUser(email, password)
+                registerUser(
+                    fullName,
+                    companyName,
+                    jobPosition,
+                    email,
+                    password
+                )
             }
         }
     }
 
-    private fun registerUser(email: String, password: String) {
+    private fun registerUser(
+        fullName: String,
+        companyName: String,
+        jobPosition: String,
+        email: String,
+        password: String
+    ) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    auth.currentUser?.sendEmailVerification()?.addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            confirmSignUp()
+                    val firebaseUser = auth.currentUser
+                    var userId = ""
+
+                    if (firebaseUser != null) {
+                        userId = firebaseUser.uid
+                    }
+
+                    reference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
+
+                    val mHashMap = HashMap<String, Any>()
+                    mHashMap["id"] = userId
+                    mHashMap["imageUrl"] = "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
+                    mHashMap["fullName"] = fullName
+                    mHashMap["companyName"] = companyName
+                    mHashMap["jobPosition"] = jobPosition
+                    mHashMap["email"] = email
+                    mHashMap["password"] = password
+
+                    reference.setValue(mHashMap).addOnCompleteListener { task1 ->
+                        if (task1.isSuccessful) {
+                            auth.currentUser?.sendEmailVerification()?.addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    confirmSignUp()
+                                } else {
+                                    Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         } else {
-                            Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "${task1.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {

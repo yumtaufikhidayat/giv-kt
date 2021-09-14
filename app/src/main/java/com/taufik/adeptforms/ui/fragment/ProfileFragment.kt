@@ -1,11 +1,7 @@
 package com.taufik.adeptforms.ui.fragment
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.database.*
+import com.taufik.adeptforms.data.model.users.Users
 import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentProfileBinding
 import com.taufik.adeptforms.ui.adapter.profile.ProfileAdapter
-import java.io.ByteArrayOutputStream
 
 class ProfileFragment : Fragment() {
 
@@ -26,10 +22,9 @@ class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var profileAdapter: ProfileAdapter
-    private lateinit var imageUri: Uri
 
     companion object {
-        const val REQUEST_CAMERA_CODE = 100
+        const val TAG = "PROFILE_FRAGMENT"
     }
 
     override fun onCreateView(
@@ -45,6 +40,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         backToHomeFragment()
+
+        retrieveDataFromDb()
 
         navigateToStorageFragment()
 
@@ -65,6 +62,26 @@ class ProfileFragment : Fragment() {
             cardEditImage.setOnClickListener {
                 val actionToStorage = ProfileFragmentDirections.actionNavProfileToNavStorage()
                 findNavController().navigate(actionToStorage)
+            }
+        }
+    }
+
+    private fun retrieveDataFromDb() {
+        binding.apply {
+            auth = FirebaseAuth.getInstance()
+            if (auth.currentUser != null) {
+                val reference = FirebaseDatabase.getInstance().reference.child(auth.currentUser!!.uid).child(auth.currentUser!!.uid)
+                reference.keepSynced(true)
+                reference.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val users = snapshot.getValue(Users::class.java)
+                        Log.e(TAG, "onDataChange: $users")
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e(TAG, "onCancelled: ${error.message}")
+                    }
+                })
             }
         }
     }

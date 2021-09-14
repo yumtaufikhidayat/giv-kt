@@ -105,10 +105,12 @@ class StorageFragment : Fragment() {
                             "Profile image successfully uploaded",
                             Toast.LENGTH_SHORT
                         ).show()
+
                         loadingDialog.dismissLoadingDialog()
-                        val actionToProfile =
-                            StorageFragmentDirections.actionNavStorageToNavProfile()
+
+                        val actionToProfile = StorageFragmentDirections.actionNavStorageToNavProfile()
                         findNavController().navigate(actionToProfile)
+
                     }.addOnFailureListener {
                         loadingDialog.dismissLoadingDialog()
                         Toast.makeText(
