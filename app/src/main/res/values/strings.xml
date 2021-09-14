@@ -14,6 +14,8 @@
     <string name="tvForgotPasswords">Forgot Passwords</string>
     <string name="tvFullName">Full Name</string>
     <string name="tvUsername">Username</string>
+    <string name="tvCompanyName">Company Name</string>
+    <string name="tvJobPosition">Job Position</string>
     <string name="tvForgotPasswordInfo">Fill in your registered email in AdeptForms to create a new password</string>
     <string name="tvLite">Lite</string>
     <string name="tvHelpYou">How can we help you?</string>
