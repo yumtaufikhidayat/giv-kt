@@ -107,6 +107,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 registerUser(
                     fullName,
+                    username,
                     companyName,
                     jobPosition,
                     email,
@@ -118,6 +119,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerUser(
         fullName: String,
+        userName: String,
         companyName: String,
         jobPosition: String,
         email: String,
@@ -139,6 +141,7 @@ class RegisterActivity : AppCompatActivity() {
                     mHashMap["id"] = userId
                     mHashMap["imageUrl"] = "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
                     mHashMap["fullName"] = fullName
+                    mHashMap["userName"] = userName
                     mHashMap["companyName"] = companyName
                     mHashMap["jobPosition"] = jobPosition
                     mHashMap["email"] = email

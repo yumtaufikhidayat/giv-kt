@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.taufik.adeptforms.data.model.users.Users
 import com.taufik.adeptforms.data.utils.DummyData
@@ -21,6 +22,7 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseUser: FirebaseUser
     private lateinit var profileAdapter: ProfileAdapter
 
     companion object {
@@ -69,64 +71,31 @@ class ProfileFragment : Fragment() {
     private fun retrieveDataFromDb() {
         binding.apply {
             auth = FirebaseAuth.getInstance()
-            if (auth.currentUser != null) {
-                val reference = FirebaseDatabase.getInstance().reference.child(auth.currentUser!!.uid).child(auth.currentUser!!.uid)
-                reference.keepSynced(true)
-                reference.addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val users = snapshot.getValue(Users::class.java)
+            firebaseUser = auth.currentUser!!
+            val reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
+            reference.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val users = snapshot.getValue(Users::class.java)
+                    if (users != null) {
+
+                        Log.e(TAG, "onDataChange: $users")
+
+                        etEmail.text = users.email
+                        etFullName.text = users.fullName
+                        etUsername.setText(users.userName)
+                        etPassword.setText(users.password)
+
+                    } else {
                         Log.e(TAG, "onDataChange: $users")
                     }
+                }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.e(TAG, "onCancelled: ${error.message}")
-                    }
-                })
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
     }
-
-//    private fun openCamera() {
-//        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
-//            activity?.packageManager?.let {
-//                intent.resolveActivity(it).also {
-//                    startActivityForResult(intent, REQUEST_CAMERA_CODE)
-//                }
-//            }
-//        }
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
-//            val imageBitmap = data?.extras?.get("data") as Bitmap
-//            uploadImage(imageBitmap)
-//        }
-//    }
-//
-//    private fun uploadImage(imageBitmap: Bitmap) {
-//        val byteArrayOutputString = ByteArrayOutputStream()
-//        val reference = FirebaseStorage.getInstance().reference.child(
-//            "img/${FirebaseAuth.getInstance().currentUser?.uid}"
-//        )
-//
-//        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputString)
-//        val image = byteArrayOutputString.toByteArray()
-//
-//        reference.putBytes(image)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    reference.downloadUrl.addOnCompleteListener { taskUri ->
-//                        taskUri.result?.let {
-//                            imageUri = it
-//                            binding.apply {
-//                                imgProfileImage.setImageBitmap(imageBitmap)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//    }
 
     private fun setProfileAppIntegrations() {
         profileAdapter = ProfileAdapter()
