@@ -37,6 +37,7 @@
         <entry key="app/src/main/res/drawable/nav_scan_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/nav_settings_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ripple_yellow.xml" value="0.16324786324786325" />
+        <entry key="app/src/main/res/drawable/ripple_yellow_2.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/ripple_yellow_background.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/show_password_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/yellow_trading_button.xml" value="0.16324786324786325" />
@@ -48,12 +49,12 @@
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_docs.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_storage.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_child_horizontal.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/item_child_vertical.xml" value="0.4090909090909091" />
+        <entry key="app/src/main/res/layout/item_child_vertical.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_main_recyclerview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_settings.xml" value="0.25" />

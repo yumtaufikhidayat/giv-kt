@@ -2,8 +2,7 @@ package com.taufik.adeptforms.data.utils
 
 import com.taufik.adeptforms.R
 import com.taufik.adeptforms.data.model.home.HomeAllCategory
-import com.taufik.adeptforms.data.model.home.HomeHorizontalCategory
-import com.taufik.adeptforms.data.model.home.HomeVerticalCategory
+import com.taufik.adeptforms.data.model.home.HomeChildCategory
 import com.taufik.adeptforms.data.model.profile.Profile
 import com.taufik.adeptforms.data.model.settings.Settings
 
@@ -16,31 +15,31 @@ object DummyData {
         )
     }
 
-    private fun getHomeChildHorizontal1(): MutableList<HomeHorizontalCategory> {
+    private fun getHomeChildHorizontal1(): MutableList<HomeChildCategory> {
         return mutableListOf(
-            HomeHorizontalCategory(1, R.drawable.ic_documents, "Documents"),
-            HomeHorizontalCategory(2, R.drawable.ic_template, "Templates"),
-            HomeHorizontalCategory(3, R.drawable.ic_scan, "Scan Documents")
+            HomeChildCategory(1, R.drawable.ic_documents, "Documents", ""),
+            HomeChildCategory(2, R.drawable.ic_template, "Templates", ""),
+            HomeChildCategory(3, R.drawable.ic_scan, "Scan Documents", "")
         )
     }
 
-    private fun getHomeChildHorizontal2(): MutableList<HomeHorizontalCategory> {
+    private fun getHomeChildHorizontal2(): MutableList<HomeChildCategory> {
         return mutableListOf(
-            HomeHorizontalCategory(4, R.drawable.ic_clocking, "Clocking Reports"),
-            HomeHorizontalCategory(5, R.drawable.ic_incident, "Incident Reports"),
-            HomeHorizontalCategory(6, R.drawable.ic_sos, "Scan SOS Reports")
+            HomeChildCategory(4, R.drawable.ic_clocking, "Clocking Reports", ""),
+            HomeChildCategory(5, R.drawable.ic_incident, "Incident Reports", ""),
+            HomeChildCategory(6, R.drawable.ic_sos, "Scan SOS Reports", "")
         )
     }
 
-    private fun getHomeChildVertical1(): MutableList<HomeVerticalCategory> {
+    private fun getHomeChildVertical1(): MutableList<HomeChildCategory> {
         return mutableListOf(
-            HomeVerticalCategory(
+            HomeChildCategory(
                 1,
                 R.drawable.ic_workflow,
                 "Workflow List",
                 "You have 1 submission left to submit"
             ),
-            HomeVerticalCategory(
+            HomeChildCategory(
                 2,
                 R.drawable.ic_attendance,
                 "Attendance",
@@ -49,15 +48,15 @@ object DummyData {
         )
     }
 
-    private fun getHomeChildVertical2(): MutableList<HomeVerticalCategory> {
+    private fun getHomeChildVertical2(): MutableList<HomeChildCategory> {
         return mutableListOf(
-            HomeVerticalCategory(
+            HomeChildCategory(
                 3,
                 R.drawable.ic_report,
                 "Reports History",
                 "40 Saved and Submitted Reports"
             ),
-            HomeVerticalCategory(
+            HomeChildCategory(
                 4,
                 R.drawable.ic_personel,
                 "Personnel Managements",

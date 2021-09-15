@@ -27,6 +27,11 @@
     <string name="tvProfilePicture">Profile Picture</string>
     <string name="tvHello">Hello, welcome</string>
     <string name="tvSearchEverything">Search everything here…</string>
+    <string name="tvLatestUpdate">Latest Update</string>
+    <string name="tvNumber1">1</string>
+    <string name="tvName">Name</string>
+    <string name="tvType">Type</string>
+    <string name="tvStatus">Status</string>
 
     // Menu
     <string name="icHome">Home</string>

@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.taufik.adeptforms.data.model.home.HomeAllCategory
-import com.taufik.adeptforms.data.model.home.HomeHorizontalCategory
-import com.taufik.adeptforms.data.model.home.HomeVerticalCategory
+import com.taufik.adeptforms.data.model.home.HomeChildCategory
 import com.taufik.adeptforms.databinding.ItemMainRecyclerviewBinding
 
 class MainCategoryAdapter(
@@ -47,14 +46,14 @@ class MainCategoryAdapter(
         }
     }
 
-    private fun setHorizontalCategory(recyclerView: RecyclerView, horizontalCategory: List<HomeHorizontalCategory>) {
+    private fun setHorizontalCategory(recyclerView: RecyclerView, horizontalCategory: List<HomeChildCategory>) {
         val horizontalAdapter = CategoryHorizontalAdapter(horizontalCategory)
         recyclerView.layoutManager = GridLayoutManager(context, 3)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = horizontalAdapter
     }
 
-    private fun setVerticalCategory(recyclerView: RecyclerView, verticalCategory: List<HomeVerticalCategory>) {
+    private fun setVerticalCategory(recyclerView: RecyclerView, verticalCategory: List<HomeChildCategory>) {
         val verticalAdapter = CategoryVerticalAdapter(verticalCategory)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)

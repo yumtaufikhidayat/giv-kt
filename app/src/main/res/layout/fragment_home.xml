@@ -166,11 +166,114 @@
             android:layout_marginHorizontal="18dp"
             android:scrollbars="none"
             android:overScrollMode="never"
-            tools:itemCount="2"
+            tools:itemCount="1"
             tools:listitem="@layout/item_main_recyclerview"
             app:layout_constraintTop_toBottomOf="@id/llSearch"
             app:layout_constraintStart_toStartOf="@id/llSearch"
             app:layout_constraintEnd_toEndOf="@id/llHome"/>
+
+        <TextView
+            android:id="@+id/tvCategoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/tvLatestUpdate"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/rvMainCategory"
+            app:layout_constraintStart_toStartOf="@id/llSearch"/>
+
+        <View
+            android:id="@+id/viewMain"
+            android:layout_width="48dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            tools:visibility="visible"
+            android:background="@color/colorYellow1"
+            app:layout_constraintTop_toBottomOf="@id/tvCategoryTitle"
+            app:layout_constraintStart_toStartOf="@id/tvCategoryTitle"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llLatestUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/llSearch"
+            app:layout_constraintTop_toTopOf="@id/tvCategoryTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvCategoryTitle">
+
+            <ImageView
+                android:id="@+id/imgArrowLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_left"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/colorYellow1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgIcon"
+                app:layout_constraintBottom_toBottomOf="@id/imgIcon">
+
+                <TextView
+                    android:id="@+id/tvHomeInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tvNumber1"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/imgArrowRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_right"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llLatestUpdateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            tools:visibility="visible"
+            app:layout_constraintStart_toStartOf="@id/llSearch"
+            app:layout_constraintEnd_toEndOf="@id/llSearch"
+            app:layout_constraintTop_toBottomOf="@id/viewMain">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tvName"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tvType"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tvStatus"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
