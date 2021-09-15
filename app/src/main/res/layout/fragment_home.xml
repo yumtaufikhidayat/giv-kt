@@ -159,6 +159,19 @@
 
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMainCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_main_recyclerview"
+            app:layout_constraintTop_toBottomOf="@id/llSearch"
+            app:layout_constraintStart_toStartOf="@id/llSearch"
+            app:layout_constraintEnd_toEndOf="@id/llHome"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

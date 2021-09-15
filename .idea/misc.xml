@@ -48,10 +48,13 @@
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_docs.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_storage.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/item_child_horizontal.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_child_vertical.xml" value="0.4090909090909091" />
+        <entry key="app/src/main/res/layout/item_main_recyclerview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_settings.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1828125" />

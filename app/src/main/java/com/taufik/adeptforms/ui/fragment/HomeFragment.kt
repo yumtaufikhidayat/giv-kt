@@ -1,5 +1,6 @@
 package com.taufik.adeptforms.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -16,8 +18,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.taufik.adeptforms.data.model.home.HomeAllCategory
 import com.taufik.adeptforms.data.model.users.Users
+import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentHomeBinding
+import com.taufik.adeptforms.ui.adapter.home.MainCategoryAdapter
 
 class HomeFragment : Fragment() {
 
@@ -27,6 +32,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var profileReference: StorageReference
+    private lateinit var mainAdapter: MainCategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +53,8 @@ class HomeFragment : Fragment() {
         showProfileImage()
 
         retrieveDataFromDb()
+
+        setRecyclerViewData(requireActivity(), DummyData.getHomeAllCategory())
     }
 
     private fun navigateToProfile() {
@@ -99,6 +107,15 @@ class HomeFragment : Fragment() {
                     Log.e(ProfileFragment.TAG, "onCancelled: ${error.message}")
                 }
             })
+        }
+    }
+
+    private fun setRecyclerViewData(context: Context, allCategory: List<HomeAllCategory>) {
+        mainAdapter = MainCategoryAdapter(context, allCategory)
+        binding.apply {
+            rvMainCategory.layoutManager = LinearLayoutManager(requireActivity())
+            rvMainCategory.setHasFixedSize(true)
+            rvMainCategory.adapter = mainAdapter
         }
     }
 
