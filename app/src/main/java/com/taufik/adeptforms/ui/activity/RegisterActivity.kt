@@ -143,7 +143,6 @@ class RegisterActivity : AppCompatActivity() {
 
                     val mHashMap = HashMap<String, Any>()
                     mHashMap["id"] = userId
-                    mHashMap["imageUrl"] = "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
                     mHashMap["fullName"] = fullName
                     mHashMap["userName"] = userName
                     mHashMap["companyName"] = companyName
