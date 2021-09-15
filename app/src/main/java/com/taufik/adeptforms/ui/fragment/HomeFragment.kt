@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -39,11 +40,22 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        navigateToProfile()
+
         initFirebase()
 
         showProfileImage()
 
         retrieveDataFromDb()
+    }
+
+    private fun navigateToProfile() {
+        binding.apply {
+            cardProfile.setOnClickListener {
+                val actionToProfile = HomeFragmentDirections.actionNavHomeToNavProfile()
+                findNavController().navigate(actionToProfile)
+            }
+        }
     }
 
     private fun initFirebase() {
@@ -76,7 +88,7 @@ class HomeFragment : Fragment() {
                     if (users != null) {
 
                         tvProfileName.text = users.fullName
-                        tvJobPosition.text = users.jobPosition
+                        tvCompanyName.text = users.companyName
 
                     } else {
                         Log.e(ProfileFragment.TAG, "onDataChange: $users")

@@ -26,6 +26,7 @@
     <string name="tvProcessing">Processing…</string>
     <string name="tvProfilePicture">Profile Picture</string>
     <string name="tvHello">Hello, welcome</string>
+    <string name="tvSearchEverything">Search everything here…</string>
 
     // Menu
     <string name="icHome">Home</string>
