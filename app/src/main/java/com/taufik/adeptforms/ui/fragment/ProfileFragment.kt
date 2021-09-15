@@ -10,12 +10,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.taufik.adeptforms.data.model.users.Users
 import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentProfileBinding
@@ -30,6 +33,7 @@ class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var profileAdapter: ProfileAdapter
+    private lateinit var profileReference: StorageReference
 
     companion object {
         const val TAG = "PROFILE_FRAGMENT"
@@ -48,6 +52,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         backToHomeFragment()
+
+        initFirebase()
+
+        showProfileImage()
 
         retrieveDataFromDb()
 
@@ -69,6 +77,22 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun initFirebase() {
+        auth = FirebaseAuth.getInstance()
+    }
+
+    private fun showProfileImage() {
+        binding.apply {
+            val storageReference = FirebaseStorage.getInstance().getReference("img/${auth.currentUser?.uid}/")
+            profileReference = storageReference.child("profile.png")
+            profileReference.downloadUrl.addOnSuccessListener {
+                Glide.with(requireActivity())
+                    .load(it)
+                    .into(imgProfileImage)
+            }
+        }
+    }
+
     private fun navigateToStorageFragment() {
         binding.apply {
             cardEditImage.setOnClickListener {
@@ -80,7 +104,6 @@ class ProfileFragment : Fragment() {
 
     private fun retrieveDataFromDb() {
         binding.apply {
-            auth = FirebaseAuth.getInstance()
             firebaseUser = auth.currentUser!!
             val reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
             reference.addValueEventListener(object : ValueEventListener{

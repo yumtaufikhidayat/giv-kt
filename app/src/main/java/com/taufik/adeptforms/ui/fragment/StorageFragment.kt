@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.taufik.adeptforms.data.utils.LoadingDialog
 import com.taufik.adeptforms.databinding.FragmentStorageBinding
-import java.text.SimpleDateFormat
 import java.util.*
 
 class StorageFragment : Fragment() {
@@ -92,11 +91,7 @@ class StorageFragment : Fragment() {
         binding.apply {
             btnUploadImage.setOnClickListener {
                 loadingDialog.startLoadingDialog()
-                val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val dateNow = Date()
-                val fileName = formatter.format(dateNow)
-                val storageReference = FirebaseStorage.getInstance().getReference("img/${auth.currentUser?.uid}/$fileName")
-
+                val storageReference = FirebaseStorage.getInstance().getReference("img/${auth.currentUser?.uid}/profile.png")
                 if (this@StorageFragment::imageUri.isInitialized) {
                     storageReference.putFile(imageUri).addOnSuccessListener {
                         imgProfileImage.setImageURI(null)
