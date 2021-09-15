@@ -19,9 +19,11 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.taufik.adeptforms.data.model.home.HomeAllCategory
+import com.taufik.adeptforms.data.model.home.LatestUpdate
 import com.taufik.adeptforms.data.model.users.Users
 import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentHomeBinding
+import com.taufik.adeptforms.ui.adapter.home.LatestUpdateAdapter
 import com.taufik.adeptforms.ui.adapter.home.MainCategoryAdapter
 
 class HomeFragment : Fragment() {
@@ -33,6 +35,7 @@ class HomeFragment : Fragment() {
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var profileReference: StorageReference
     private lateinit var mainAdapter: MainCategoryAdapter
+    private lateinit var latestUpdateAdapter: LatestUpdateAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,7 +57,9 @@ class HomeFragment : Fragment() {
 
         retrieveDataFromDb()
 
-        setRecyclerViewData(requireActivity(), DummyData.getHomeAllCategory())
+        setMainRecyclerViewData(requireActivity(), DummyData.getHomeAllCategory())
+
+        setLatestUpdateData(DummyData.getLatestUpdate())
     }
 
     private fun navigateToProfile() {
@@ -110,12 +115,21 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setRecyclerViewData(context: Context, allCategory: List<HomeAllCategory>) {
+    private fun setMainRecyclerViewData(context: Context, allCategory: List<HomeAllCategory>) {
         mainAdapter = MainCategoryAdapter(context, allCategory)
         binding.apply {
             rvMainCategory.layoutManager = LinearLayoutManager(requireActivity())
             rvMainCategory.setHasFixedSize(true)
             rvMainCategory.adapter = mainAdapter
+        }
+    }
+
+    private fun setLatestUpdateData(latestUpdate: List<LatestUpdate>) {
+        latestUpdateAdapter = LatestUpdateAdapter(latestUpdate)
+        binding.apply {
+            rvLatestUpdate.layoutManager = LinearLayoutManager(requireActivity())
+            rvLatestUpdate.setHasFixedSize(true)
+            rvLatestUpdate.adapter = latestUpdateAdapter
         }
     }
 

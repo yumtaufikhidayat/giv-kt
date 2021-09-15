@@ -3,6 +3,7 @@ package com.taufik.adeptforms.data.utils
 import com.taufik.adeptforms.R
 import com.taufik.adeptforms.data.model.home.HomeAllCategory
 import com.taufik.adeptforms.data.model.home.HomeChildCategory
+import com.taufik.adeptforms.data.model.home.LatestUpdate
 import com.taufik.adeptforms.data.model.profile.Profile
 import com.taufik.adeptforms.data.model.settings.Settings
 
@@ -61,6 +62,41 @@ object DummyData {
                 R.drawable.ic_personel,
                 "Personnel Managements",
                 "32 Active Personnel"
+            )
+        )
+    }
+
+    fun getLatestUpdate(): MutableList<LatestUpdate> {
+        return mutableListOf(
+            LatestUpdate(
+                1,
+                "Medical Leave Form",
+                "Template",
+                "Pending"
+            ),
+            LatestUpdate(
+                2,
+                "Approval Flow",
+                "Workflow",
+                "Draft"
+            ),
+            LatestUpdate(
+                3,
+                "Incident Form",
+                "Form (Docs)",
+                "Assigned"
+            ),
+            LatestUpdate(
+                4,
+                "Approval Flow",
+                "Workflow",
+                "Draft"
+            ),
+            LatestUpdate(
+                5,
+                "Incident Form",
+                "Form (Docs)",
+                "Assigned"
             )
         )
     }
