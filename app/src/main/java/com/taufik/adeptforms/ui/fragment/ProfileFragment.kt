@@ -1,20 +1,26 @@
 package com.taufik.adeptforms.ui.fragment
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.taufik.adeptforms.data.model.users.Users
 import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentProfileBinding
 import com.taufik.adeptforms.ui.adapter.profile.ProfileAdapter
+import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -44,6 +50,10 @@ class ProfileFragment : Fragment() {
         backToHomeFragment()
 
         retrieveDataFromDb()
+
+        editUsername()
+
+        editPassword()
 
         navigateToStorageFragment()
 
@@ -82,8 +92,8 @@ class ProfileFragment : Fragment() {
 
                         tvProfileName.text = users.fullName
                         tvJobPosition.text = users.jobPosition
-                        etEmail.text = users.email
-                        etFullName.text = users.fullName
+                        etEmail.setText(users.email)
+                        etFullName.setText(users.fullName)
                         etUsername.setText(users.userName)
                         etPassword.setText(users.password)
 
@@ -97,6 +107,68 @@ class ProfileFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun editUsername() {
+        binding.apply {
+            imgEditUsername.setOnClickListener {
+                confirmUpdateUsername()
+            }
+        }
+    }
+
+    private fun confirmUpdateUsername() {
+        binding.apply {
+            AlertDialog.Builder(requireActivity()).apply {
+                setTitle("Update Username!")
+                setMessage("Are you sure you want to update username?")
+                setNegativeButton("No", null)
+                setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
+                    updateUsername(etUsername.text.toString())
+                }
+                setCancelable(false)
+                create()
+                show()
+            }
+        }
+    }
+
+    private fun updateUsername(username: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
+        val mHashMap = HashMap<String, Any>()
+        mHashMap["userName"] = username
+        databaseReference.updateChildren(mHashMap)
+    }
+
+    private fun editPassword() {
+        binding.apply {
+            imgEditPassword.setOnClickListener {
+                confirmUpdatePassword()
+            }
+        }
+    }
+
+    private fun confirmUpdatePassword() {
+        binding.apply {
+            AlertDialog.Builder(requireActivity()).apply {
+                setTitle("Update Password!")
+                setMessage("Are you sure you want to update password?")
+                setNegativeButton("No", null)
+                setPositiveButton("Yes") { _: DialogInterface?, _: Int ->
+                    updatePassword(etPassword.text.toString())
+                }
+                setCancelable(false)
+                create()
+                show()
+            }
+        }
+    }
+
+    private fun updatePassword(password: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
+        val mHashMap = HashMap<String, Any>()
+        mHashMap["password"] = password
+        databaseReference.updateChildren(mHashMap)
     }
 
     private fun setProfileAppIntegrations() {
