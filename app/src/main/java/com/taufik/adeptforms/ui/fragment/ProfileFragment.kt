@@ -75,10 +75,10 @@ class ProfileFragment : Fragment() {
             val reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
             reference.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val users = snapshot.getValue(Users::class.java)
-                    if (users != null) {
 
-                        Log.e(TAG, "onDataChange: $users")
+                    val users = snapshot.getValue(Users::class.java)
+
+                    if (users != null) {
 
                         tvProfileName.text = users.fullName
                         tvJobPosition.text = users.jobPosition

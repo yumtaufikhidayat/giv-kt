@@ -24,6 +24,7 @@
     <string name="tvHRMLabs">HRMLabs</string>
     <string name="tvHRMLabsDesc">Adeptforms pulls your employment data</string>
     <string name="tvProcessing">Processing…</string>
+    <string name="tvProfilePicture">Profile Picture</string>
 
     // Menu
     <string name="icHome">Home</string>

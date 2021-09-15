@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.taufik.adeptforms.R
+import com.taufik.adeptforms.data.utils.LoadingDialog
 import com.taufik.adeptforms.databinding.ActivityRegisterBinding
 import java.util.*
 
@@ -21,6 +22,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
 
         setWindowNotificationBackground()
 
-        initFirebaseAuth()
+        setInit()
 
         setSignUp()
 
@@ -49,8 +51,9 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun initFirebaseAuth() {
+    private fun setInit() {
         auth = FirebaseAuth.getInstance()
+        loadingDialog = LoadingDialog(this)
     }
 
     private fun setSignUp() {
@@ -64,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
                 val password = etPassword.text.toString().trim()
 
                 if (fullName.isEmpty()) {
-                    etFullName.error = "Fullname can't be blank"
+                    etFullName.error = "Full name can't be blank"
                     etFullName.requestFocus()
                     return@setOnClickListener
                 }
@@ -105,6 +108,7 @@ class RegisterActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
+                loadingDialog.startLoadingDialog()
                 registerUser(
                     fullName,
                     username,
@@ -149,6 +153,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     reference.setValue(mHashMap).addOnCompleteListener { task1 ->
                         if (task1.isSuccessful) {
+                            loadingDialog.dismissLoadingDialog()
                             auth.currentUser?.sendEmailVerification()?.addOnCompleteListener {
                                 if (it.isSuccessful) {
                                     confirmSignUp()
@@ -157,10 +162,12 @@ class RegisterActivity : AppCompatActivity() {
                                 }
                             }
                         } else {
+                            loadingDialog.dismissLoadingDialog()
                             Toast.makeText(this, "${task1.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
+                    loadingDialog.dismissLoadingDialog()
                     Toast.makeText(this, "${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }

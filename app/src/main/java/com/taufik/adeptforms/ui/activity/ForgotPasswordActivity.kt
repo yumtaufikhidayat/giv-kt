@@ -11,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.taufik.adeptforms.R
+import com.taufik.adeptforms.data.utils.LoadingDialog
 import com.taufik.adeptforms.databinding.ActivityForgotPasswordBinding
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityForgotPasswordBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         setWindowNotificationBackground()
 
-        initFirebaseAuth()
+        setInit()
 
         setResetPassword()
 
@@ -45,8 +47,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
-    private fun initFirebaseAuth() {
+    private fun setInit() {
         auth = FirebaseAuth.getInstance()
+        loadingDialog = LoadingDialog(this)
     }
 
     private fun setResetPassword() {
@@ -67,6 +70,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
+                loadingDialog.startLoadingDialog()
                 resetPassword(email)
             }
         }
@@ -75,8 +79,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun resetPassword(email: String) {
         auth.sendPasswordResetEmail(email).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    loadingDialog.dismissLoadingDialog()
                     confirmResetPassword()
                 } else {
+                    loadingDialog.dismissLoadingDialog()
                     Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
