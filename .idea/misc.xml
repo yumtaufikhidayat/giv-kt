@@ -17,9 +17,11 @@
         <entry key="app/src/main/res/drawable/background_transparent.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/bg_gradient_splashscreen.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/edittext_white_bg_round_more.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/green_trading_button.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/ic_arrow_left.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_eye_off_password.xml" value="0.19895833333333332" />
@@ -29,6 +31,7 @@
         <entry key="app/src/main/res/drawable/ic_outline_dark_mode.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_outline_edit.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_outline_headset.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_outline_replay.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/ic_outline_segment.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/ic_person_add.xml" value="0.16324786324786325" />
@@ -41,6 +44,7 @@
         <entry key="app/src/main/res/drawable/ripple_yellow.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/ripple_yellow_2.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/ripple_yellow_background.xml" value="0.16324786324786325" />
+        <entry key="app/src/main/res/drawable/ripple_yellow_stroke.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/show_password_selector.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/drawable/yellow_trading_button.xml" value="0.16324786324786325" />
         <entry key="app/src/main/res/drawable/yellow_trading_button_selected.xml" value="0.16324786324786325" />
@@ -49,15 +53,17 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/bottom_sheet_report.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_docs.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_storage.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/item_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_child_horizontal.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_child_vertical.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/item_latest_update.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/item_latest_update.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_main_recyclerview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_settings.xml" value="0.25" />

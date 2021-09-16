@@ -4,6 +4,7 @@ import com.taufik.adeptforms.R
 import com.taufik.adeptforms.data.model.home.HomeAllCategory
 import com.taufik.adeptforms.data.model.home.HomeChildCategory
 import com.taufik.adeptforms.data.model.home.LatestUpdate
+import com.taufik.adeptforms.data.model.home.Reports
 import com.taufik.adeptforms.data.model.profile.Profile
 import com.taufik.adeptforms.data.model.settings.Settings
 
@@ -97,6 +98,29 @@ object DummyData {
                 "Incident Form",
                 "Form (Docs)",
                 "Assigned"
+            )
+        )
+    }
+
+    fun getReportsBottomSheetData(): MutableList<Reports> {
+        return mutableListOf(
+            Reports(
+                "Block A Clocking Route",
+                "Del Sol Valley",
+                "Chateau Peak Street, 22A",
+                "May 5, 2021",
+                "09:22:12",
+                "May 5, 2021",
+                "11:45:03"
+            ),
+            Reports(
+                "Block B Clocking Route",
+                "Del Sol Valley",
+                "Chateau Peak Street, 22A",
+                "May 5, 2021",
+                "13:00:12",
+                "May 5, 2021",
+                "-"
             )
         )
     }

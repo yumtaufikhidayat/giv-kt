@@ -32,6 +32,13 @@
     <string name="tvName">Name</string>
     <string name="tvType">Type</string>
     <string name="tvStatus">Status</string>
+    <string name="tvClockingReports">Clocking Reports</string>
+    <string name="tvTodayJobList">Today\'s Job List</string>
+    <string name="tvJobsName">Jobs Name:</string>
+    <string name="tvClient">Client:</string>
+    <string name="tvAreaAddress">Area Address:</string>
+    <string name="tvClockInTime">Clock In Time:</string>
+    <string name="tvClockOutTime">Clock Out Time:</string>
 
     // Menu
     <string name="icHome">Home</string>
@@ -47,5 +54,7 @@
     <string name="btnConnected">Connected</string>
     <string name="btnSelectImage">Select Image</string>
     <string name="btnUploadImage">Upload Image</string>
+    <string name="btnReportProblem">Report a Problem</string>
+    <string name="btnMarkComplete">Mark as Complete</string>
 
 </resources>
