@@ -13,7 +13,7 @@ import com.taufik.adeptforms.databinding.ItemMainRecyclerviewBinding
 
 class MainCategoryAdapter(
     private val context: Context,
-    private val allCategory: List<HomeAllCategory>
+    private var allCategory: List<HomeAllCategory>
 ) : RecyclerView.Adapter<MainCategoryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -58,5 +58,10 @@ class MainCategoryAdapter(
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = verticalAdapter
+    }
+
+    fun filterList(filteredList: List<HomeAllCategory>) {
+        allCategory = filteredList
+        notifyDataSetChanged()
     }
 }

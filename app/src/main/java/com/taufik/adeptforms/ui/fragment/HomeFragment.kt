@@ -1,7 +1,8 @@
 package com.taufik.adeptforms.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,8 @@ import com.taufik.adeptforms.data.utils.DummyData
 import com.taufik.adeptforms.databinding.FragmentHomeBinding
 import com.taufik.adeptforms.ui.adapter.home.LatestUpdateAdapter
 import com.taufik.adeptforms.ui.adapter.home.MainCategoryAdapter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
@@ -57,7 +60,9 @@ class HomeFragment : Fragment() {
 
         retrieveDataFromDb()
 
-        setMainRecyclerViewData(requireActivity(), DummyData.getHomeAllCategory())
+        searchData()
+
+        setMainRecyclerViewData()
 
         setLatestUpdateData(DummyData.getLatestUpdate())
     }
@@ -73,6 +78,7 @@ class HomeFragment : Fragment() {
 
     private fun initFirebase() {
         auth = FirebaseAuth.getInstance()
+        mainAdapter = MainCategoryAdapter(requireActivity(), DummyData.getHomeAllCategory())
     }
 
     private fun showProfileImage() {
@@ -115,8 +121,42 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setMainRecyclerViewData(context: Context, allCategory: List<HomeAllCategory>) {
-        mainAdapter = MainCategoryAdapter(context, allCategory)
+    private fun searchData() {
+        binding.apply {
+            etSearch.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    filterData(s.toString())
+                }
+            })
+        }
+    }
+
+    private fun filterData(text: String) {
+        val filteredList: ArrayList<HomeAllCategory> = ArrayList()
+
+        for (item in DummyData.getHomeAllCategory()) {
+            if (item.categoryTitle.lowercase(Locale.getDefault()).contains(text.lowercase(Locale.getDefault()))) {
+                filteredList.add(item)
+            }
+        }
+
+        mainAdapter.filterList(filteredList)
+    }
+
+    private fun setMainRecyclerViewData() {
         binding.apply {
             rvMainCategory.layoutManager = LinearLayoutManager(requireActivity())
             rvMainCategory.setHasFixedSize(true)
